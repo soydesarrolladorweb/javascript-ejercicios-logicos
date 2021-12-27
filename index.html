@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de lógica en JavaScript</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1 class="header__title">Ejercicios de lógica en JavaScript</h1>
+            <p class="header__subtitle">Version 1.0</p>
+        </header>
+           <section class="container">
+            <div>
+                <h2 class="copy">Los ejercicios los encontraras en la carpeta JS - archivo main.js</h2>    
+            </div>
+            <div>
+                <h2 class="copy">Abre la console de tu navegador y encontraras el proyecto final.</h2>
+            </div>
+            <div>
+                <h2 class="copy">La interfaz de este proyecto esta en construcción.</h2>
+            </div>
+            
+           </section>
+    </main>
+<script>
+    console.info(`Proyecto final para ejercicios de lógica en JavaScript.\nInterfaz en construcción.`);
+class Pelicula{
+            
+    constructor({id, titulo, director, estreno, pais, generos, calificacion}){
+            
+        this._id = id;
+        this._titulo = titulo;
+        this._director = director;
+        this._estreno = estreno;
+        this._pais = pais;
+        this._generos = generos;
+        this._calificacion = calificacion;
+
+        this.validarIMDB(id);
+        this.validarTitulo(titulo);
+        this.validarDirector(director);
+        this.validarEstreno(estreno);
+        this.validarPais(pais);
+        this.validarGeneros(generos);
+        this.validarCalificacion(calificacion);
+    }
+
+    static get listaGeneros(){
+        return ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller", "War", "Western"];
+    }
+
+    static generosAceptados(){
+        return console.info(`Los generos aceptados son: ${Pelicula.listaGeneros.join(",")}`);
+    }
+
+    // ****************** METODOS GENERALES ****************
+    validarCadena(propiedad, valor){
+        if(!valor) return console.warn(`${propiedad} "${valor}" esta vacío`);
+
+        if(typeof valor !== "string")return console.error(`${propiedad} "${valor}" Ingresado, NO es una cadena de texto`);
+
+        return true;
+    }
+
+    validarLongitudCadena(propiedad, valor, longitud){
+        if(valor.length > longitud)return console.error(`${propiedad} "${valor}" excede el número de caracteres permitidos (${longitud}).`);
+
+        return true;
+    }
+
+    validarNumero(propiedad, valor){
+        if(!valor) return console.warn(`${propiedad} "${valor}" esta vacío`);
+
+        if(typeof valor !== "number")return console.error(`${propiedad} "${valor}" Ingresado, NO es un número.`);
+
+        return true;
+    }
+
+    validarArreglo(propiedad, valor){
+        if(!valor) return console.warn(`${propiedad} "${valor}" esta vacío`);
+
+        if(!(valor instanceof Array)) return console.error(`${propiedad} "${valor}" Ingresado, NO es un arreglo.`);
+
+        if(valor.length === 0) return console.error(`${propiedad} "${valor}" NO tiene datos.`);
+
+        for(let cadena of valor){
+            if(typeof cadena !== "string")return console.error(`El valor "${cadena}" Ingresado, NO es una cadena de texto.`);
+        }
+
+        return true;
+    }
+
+    // ******************* METODO INDIVIDUALES *************
+    validarIMDB(id){
+        if(this.validarCadena("IMBD id", id))
+            if(!(/^([a-z]){2}([0-9]){7}$/.test(id)))
+             return console.error(`IMBD id "${id}" nos es valido, debe tener 9 caracteres, los 2 primeros  letras en minisculas y los 7 restantes números.`);
+    }
+
+    validarTitulo(titulo){
+        if(this.validarCadena("Titulo", titulo))
+            this.validarLongitudCadena("Titulo", titulo, 100);
+    }
+    
+    validarDirector(director){
+        if(this.validarCadena("Director", director))
+            this.validarLongitudCadena("Director", director, 50);
+    }
+
+    validarEstreno(estreno){
+        if(this.validarNumero("Año de Estreno", estreno))
+            if(!(/^([0-9]){4}$/.test(estreno)))
+             return console.error(`Año de Estreno "${estreno}" nos es valido, debe ser un numero entero de 4 digitos.`);
+    }
+
+    validarPais(pais){
+        this.validarArreglo("Pais", pais)
+    }
+
+    validarGeneros(generos){
+        if(this.validarArreglo("Generos",generos)){
+            for (let genero of generos) {
+                if(!Pelicula.listaGeneros.includes(genero)){
+                    console.error(`Genero()s incorrectos "${generos.join(",")}"`);
+                    Pelicula.generosAceptados();
+                }
+            }
+        }
+    }
+
+    validarCalificacion(calificacion){
+        if(this.validarNumero("Calificación", calificacion))
+         return (calificacion < 0 || calificacion > 10) 
+         ? console.error(`La calificación tiene que estar en un rango entre 0 y 10`)
+         : this.calificacion = calificacion.toFixed(1);
+    }
+
+    fichaTecnica(){
+        console.info(`Ficha Técnica:\nTítulo: "${this._titulo}"\nDirector: "${this._director}"\nAño: "${this._estreno}"\nPaís: "${this._pais.join("-")}"\nGeneros: "${this._generos.join(",")}"\nCalificación: "${this._calificacion}"\nIMDB id: "${this._id}"`)
+    }
+
+
+}
+
+//Pelicula.generosAceptados();
+    
+// const peli = new Pelicula({
+//     id: "tt1234567",
+//     titulo: "Titulo de la peli",
+//     director: "Director de la peli",
+//     estreno: 2021,
+//     pais: ["Colombia"],
+//     generos: ["Comedy", "Action"],
+//     calificacion: 7.8
+// });
+
+
+// peli.fichaTecnica();
+
+const misPelis = [
+    {
+        id: "tt4158110",
+        titulo: "Mr. Robot",
+        director: "Sam Esmail",
+        estreno: 2015,
+        pais: ["USA"],
+        generos: ["Crime", "Drama", "Thriller"],
+        calificacion: 8.5
+
+    },
+    {
+        id: "tt0111161",
+        titulo: "The Shawshank redemption",
+        director: "Frank Darabont",
+        estreno: 1994,
+        pais: ["USA"],
+        generos: ["Drama"],
+        calificacion: 9.3
+
+    },
+    {
+        id: "tt1636826",
+        titulo: "Project X",
+        director: "Nima Nourizadeh",
+        estreno: 2012,
+        pais: ["USA"],
+        generos: ["Comedy"],
+        calificacion: 6.6
+
+    }
+];
+
+misPelis.forEach(el => new Pelicula(el).fichaTecnica());
+
+
+</script>
+
+    <footer>
+        <div class="container">
+            <p class="header__subtitle footer__title">&#169; 2021 Fabian Barrera. All right reserved</p>
+        </div>
+    </footer>
+</body>
+<script src="./js/main.js" type="module"></script>
+
+</html>
