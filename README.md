@@ -39,8 +39,8 @@ En este proyecto encontraras 27 ejercicios en JavaScript Moderno, los cuales me 
   devolverá 35 años (en 2020). 
 * 18 Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales:
  4, Consonantes: 5.   
-* 19 Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero. 
-* 20 Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.
+* 19 Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Fabian Barrera") devolverá verdadero. 
+* 20 Programa una función que valide que un texto sea un email válido, pe. miFuncion("micorreo@gmail.com") devolverá verdadero.
 * 21 Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) 
  devolverá [1, 16, 25].
 * 22 Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60]. 
