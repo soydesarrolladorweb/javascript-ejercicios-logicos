@@ -613,7 +613,7 @@ const cuentaLetras = (cadena = "")=>{
 
 /**
  ************* SOLUCIÓN PERSONAL A EJERCICIOS 19/19 *************** 
- 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
+ 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Fabian Barrera") devolverá verdadero.
 */
 const validarNombre = (nombre = "")=>{
     if(!nombre) return console.warn(`No ingresaste un nombre.`)
@@ -639,7 +639,7 @@ const validarNombre = (nombre = "")=>{
 
 /**
  ************* SOLUCIÓN PERSONAL A EJERCICIOS 20/20 *************** 
- 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.
+ 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("micorreo@gmail.com") devolverá verdadero.
 */
 const validarEmail = (email = "")=>{
     if(!email) return console.warn("No ingresaste un correo electronico.")
